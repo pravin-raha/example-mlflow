@@ -18,8 +18,8 @@ import mlflow.sklearn
 import logging
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
-mlflow.set_tracking_uri('http://localhost:5000')
-mlflow.set_experiment("wine_test")
+# mlflow.set_tracking_uri('http://localhost:5000')
+# mlflow.set_experiment("wine_test")
 
 
 def eval_metrics(actual, pred):
