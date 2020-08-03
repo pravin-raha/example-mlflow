@@ -18,7 +18,11 @@ import mlflow.sklearn
 import logging
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
+# mlflow.set_tracking_uri("http://localhost:5000")
+
 # mlflow.set_experiment("wine_test")
+tracking_uri="http://localhost:5000"
+os.environ['MLFLOW_TRACKING_URI'] = tracking_uri
 
 
 def eval_metrics(actual, pred):
@@ -35,7 +39,7 @@ if __name__ == "__main__":
 
     # Read the wine-quality csv file from the URL
     csv_url =\
-        '/home/synerzip/codebase/mlflow/examples/sklearn_elasticnet_wine/winequality-red.csv'
+        'winequality-red.csv'
     try:
         data = pd.read_csv(csv_url, sep=',')
     except Exception as e:
@@ -53,7 +57,8 @@ if __name__ == "__main__":
 
     alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
     l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
-    # mlflow.set_tracking_uri("http://localhost:5000")
+
+    print("tracking_uri ==>>  " +mlflow.get_tracking_uri())
 
     with mlflow.start_run():
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
@@ -74,6 +79,7 @@ if __name__ == "__main__":
         mlflow.log_metric("r2", r2)
         mlflow.log_metric("mae", mae)
 
+        print(mlflow.get_tracking_uri())
         # tracking_url_type_store = urlparse(mlflow.set_tracking_uri()).scheme
 
 
