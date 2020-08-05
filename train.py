@@ -21,8 +21,8 @@ logger = logging.getLogger(__name__)
 # mlflow.set_tracking_uri("http://localhost:5000")
 
 # mlflow.set_experiment("wine_test")
-tracking_uri="http://localhost:5000"
-os.environ['MLFLOW_TRACKING_URI'] = tracking_uri
+# tracking_uri="http://localhost:5000"
+# os.environ['MLFLOW_TRACKING_URI'] = tracking_uri
 
 
 def eval_metrics(actual, pred):
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         mlflow.log_metric("r2", r2)
         mlflow.log_metric("mae", mae)
 
-        print(mlflow.get_tracking_uri())
+        print("Code version 1")
         # tracking_url_type_store = urlparse(mlflow.set_tracking_uri()).scheme
 
 
