@@ -79,7 +79,7 @@ if __name__ == "__main__":
         mlflow.log_metric("r2", r2)
         mlflow.log_metric("mae", mae)
 
-        print("Code version 1")
+        print("Code version 2")
         # tracking_url_type_store = urlparse(mlflow.set_tracking_uri()).scheme
 
 
